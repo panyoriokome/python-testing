@@ -1,7 +1,7 @@
 import requests
 
 # 依存性を持った箇所
-def most_common_word_in_web_page(words, url):
+def most_common_word_in_web_page(words, url, user_agent=requests):
     """
     finds the most common word from a list of words
     in a web page, identified by its URL
