@@ -6,6 +6,15 @@ def most_common_word_in_web_page(words, url, user_agent=requests):
     finds the most common word from a list of words
     in a web page, identified by its URL
     """
+    response = user_agent.get(url)
+    return most_common_word(words, response.text)
+
+# 依存性を持った箇所
+def most_common_word_in_web_page2(words, url):
+    """
+    finds the most common word from a list of words
+    in a web page, identified by its URL
+    """
     response = requests.get(url)
     return most_common_word(words, response.text)
     

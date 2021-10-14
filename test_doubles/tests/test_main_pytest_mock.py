@@ -22,20 +22,17 @@ def test_most_common_word_in_web():
     assert mock_requests.get.call_count == 1
     assert mock_requests.get.call_args[0][0] == 'https://python.org/'
 
-def test_most_common_word_in_web2():
+def test_most_common_word_in_web2(mocker):
     excepct = 'Python'
 
-    mock_requests = Mock()
-    mock_requests.get.return_value.text = 'programming Python Python'
-
-    with patch('src.main.requests', mock_requests):
-        most_common = most_common_word_in_web_page2(
-            ['python', 'Python', 'programming'],
-            'https://python.org/'
-        )
+    requests_mock = mocker.patch('src.main.requests.get', return_value='programming Python Python')
+    most_common = most_common_word_in_web_page2(
+        ['python', 'Python', 'programming'],
+        'https://python.org/'
+    )
     assert most_common == excepct
-    assert mock_requests.get.call_count == 1
-    assert mock_requests.get.call_args[0][0] == 'https://python.org/'
+    assert requests_mock.get.call_count == 1
+    assert requests_mock.get.call_args[0][0] == 'https://python.org/'
 
 def test_most_common_word():
     assert most_common_word(['a', 'b', 'c'], 'abbbcc') \

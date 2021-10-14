@@ -8,6 +8,7 @@ authors = ["yuuwatanabe <panyoriokome@gmail.com>"]
 python = "^3.8"
 pytest = "^6.2.5"
 requests = "^2.26.0"
+pytest-mock = "^3.6.1"
 
 [tool.poetry.dev-dependencies]
 
