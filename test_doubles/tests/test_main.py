@@ -2,6 +2,8 @@ import pytest
 from src.main import most_common_word
 from src.main import most_common_word_in_web_page
 from src.main import most_common_word_in_web_page2
+from src.main import sample
+from src.main import read_file
 from unittest.mock import Mock, patch
 
 def test_most_common_word_in_web():
@@ -50,3 +52,23 @@ def test_most_common_word_empty_candidate():
 def test_most_common_ambiguous_result():
     assert most_common_word(['a', 'b', 'c'], 'ab') \
         in ('a', 'b'), "there might be a tie"
+
+def test_sample():
+    mock_multiply = Mock()
+    mock_multiply.return_value = 12
+    with patch('src.main.multiply', mock_multiply):
+        result = sample()
+    
+    assert result == 12
+
+def test_read_file():
+    # Arange
+    path = '/test/path/file.txt'
+    m = Mock()
+
+    # act
+    read_file(m, path)
+
+    # Assert
+    assert m.read.call_count == 1
+    m.read.assert_called_with(path)
