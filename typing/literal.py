@@ -1,17 +1,18 @@
 from typing import Literal, Set
 from dataclasses import dataclass
 
-@dataclass
-class Error:
-    error_code: Literal[1,2,3,4,5]
-    disposed_of: bool
+# Vegetable = Literal['Tomato', 'Cucumber', 'Onion']
+# lettuce: Vegetable = 'Lettuce'
+# print(lettuce)
 
 @dataclass
-class Snack:
-    name: Literal["Pretzel", "Hot Dog", "Veggie Burger"]
-    condiments: Set[Literal["Mustard", "Ketchup"]]
+class ToDo:
+    title: str
+    status: Literal['ToDo', 'Doing', 'Done']
 
-# この3つはエラーになる
-Snack("Pretzel", {"Mustard"}) 
-Snack("Pretzel", {"Ketchup"})
-Snack("Pretzel", {"Mustard", "Ketchup"})
+todo1 = ToDo('牛乳を買う', 'ToDo')
+print(todo1.status)
+
+
+todo2 = ToDo('牛乳を買う', 'Ready')
+print(todo2.status)
