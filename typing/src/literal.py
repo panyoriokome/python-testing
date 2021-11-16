@@ -16,3 +16,4 @@ print(todo1.status)
 
 todo2 = ToDo('牛乳を買う', 'Ready')
 print(todo2.status)
+print(todo2)
